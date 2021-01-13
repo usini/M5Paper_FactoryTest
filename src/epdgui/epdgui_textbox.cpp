@@ -66,7 +66,7 @@ void EPDGUI_Textbox::SetTextSize(uint16_t size)
     {
         _thiscreat = false;
     }
-    
+
     _canvas->setTextSize(_size);
     for (int i = 0; i < 26; i++)
     {
@@ -210,7 +210,7 @@ void EPDGUI_Textbox::AddText(String text)
     {
         return;
     }
-    
+
     uint8_t* buf = (uint8_t *)text.c_str();
     uint16_t len = strlen((char*)buf);
     uint16_t n = 0, last_n = 0;

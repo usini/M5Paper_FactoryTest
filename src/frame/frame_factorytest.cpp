@@ -52,6 +52,11 @@ Frame_FactoryTest::Frame_FactoryTest(void)
         exitbtn("主页");
         _canvas_title->drawString("出厂测试", 270, 34);
     }
+    else if (_language == LANGUAGE_FR)
+    {
+        exitbtn("Accueil");
+        _canvas_title->drawString("Test d'usine", 270, 34);
+    }
     else
     {
         exitbtn("Home");
@@ -123,7 +128,6 @@ void Frame_FactoryTest::drawItem(uint16_t flag, const char* str, int y)
 
 void Frame_FactoryTest::drawItem(m5epd_update_mode_t mode)
 {
-    
     _canvas_base->fillCanvas(0);
     if (_language == LANGUAGE_JA)
     {
@@ -150,6 +154,19 @@ void Frame_FactoryTest::drawItem(m5epd_update_mode_t mode)
         drawItem(0x0080, "8.SD卡", 450);
         drawItem(0x0100, "9.按键", 510);
         drawItem(0x0200, "10.触屏", 570);
+    }
+    else if (_language == LANGUAGE_FR)
+    {
+        drawItem(0x0001, "1.Jour", 30);
+        drawItem(0x0002, "2.Heure", 90);
+        drawItem(0x0004, "3.Température", 150);
+        drawItem(0x0008, "4.Humidité", 210);
+        drawItem(0x0010, "5.Batterie", 270);
+        drawItem(0x0020, "6.Wi-Fi", 330);
+        drawItem(0x0040, "7.PSRAM", 390);
+        drawItem(0x0080, "8.Carte SD", 450);
+        drawItem(0x0100, "9.Bouton", 510);
+        drawItem(0x0200, "10.Pad Tactile", 570);
     }
     else
     {
@@ -449,7 +466,7 @@ int Frame_FactoryTest::run()
     {
         pass_flag |= checkGrove(M5EPD_PORTC_Y_PIN, M5EPD_PORTC_W_PIN) ? 0x1000 : 0x0000;
     }
-    
+
     bool update_flag = false;
     if(temp != pass_flag)
     {

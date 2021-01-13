@@ -118,8 +118,6 @@ void EPDGUI_Run(Frame_Base* frame)
                     last_active_time = 0;
                 }
             }
-            
-            
             M5.TP.flush();
         }
 

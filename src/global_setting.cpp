@@ -45,6 +45,11 @@ const char *wallpapers_name_en[] = {
     "Engine",
     "Penrose Triangle"
 };
+const char *wallpapers_name_fr[] = {
+    "M5Paper",
+    "Moteur",
+    "Triangle Penrose"
+};
 const char *wallpapers_name_zh[] = {
     "M5Paper",
     "引擎",
@@ -111,15 +116,17 @@ void SetTimeSynced(uint8_t val)
 
 void SetLanguage(uint8_t language)
 {
-    if (language >= LANGUAGE_EN && language <= LANGUAGE_ZH)
+    if (language >= LANGUAGE_EN && language <= LANGUAGE_FR)
     {
         global_language = language;
     }
     SaveSetting();
+    log_d("Language = [%d]\n", global_language);
 }
 
 uint8_t GetLanguage(void)
 {
+    log_d("Language = [%d]\n", global_language);
     return global_language;
 }
 
@@ -147,6 +154,8 @@ const char *GetWallpaperName(uint16_t wallpaper_id)
         return wallpapers_name_zh[wallpaper_id];
     case LANGUAGE_JA:
         return wallpapers_name_ja[wallpaper_id];
+    case LANGUAGE_FR:
+        return wallpapers_name_fr[wallpaper_id];
     default:
         return wallpapers_name_en[wallpaper_id];
     }
@@ -160,12 +169,12 @@ esp_err_t LoadSetting(void)
     NVS_CHECK(nvs_get_u8(nvs_arg, "Language", &global_language));
     NVS_CHECK(nvs_get_u8(nvs_arg, "Timesync", &global_time_synced));
     nvs_get_i8(nvs_arg, "timezone", &global_timezone);
-
+    log_d("Language = [%d]\n", global_language);
     if(global_wallpaper >= WALLPAPER_NUM)
     {
         global_wallpaper = DEFAULT_WALLPAPER;
     }
-    
+
     size_t length = 128;
     char buf[128];
     NVS_CHECK(nvs_get_str(nvs_arg, "ssid", buf, &length));
@@ -180,6 +189,7 @@ esp_err_t LoadSetting(void)
 
 esp_err_t SaveSetting(void)
 {
+    log_d("Language = [%d]\n", global_language);
     nvs_handle nvs_arg;
     NVS_CHECK(nvs_open("Setting", NVS_READWRITE, &nvs_arg));
     NVS_CHECK(nvs_set_u16(nvs_arg, "Wallpaper", global_wallpaper));

@@ -17,7 +17,7 @@ Frame_PictureViewer::Frame_PictureViewer(String path)
     _canvas_picture->setTextSize(26);
     _canvas_picture->setTextColor(0);
     _canvas_picture->setTextDatum(CC_DATUM);
- 
+
     uint8_t language = GetLanguage();
     if(language == LANGUAGE_JA)
     {
@@ -26,6 +26,10 @@ Frame_PictureViewer::Frame_PictureViewer(String path)
     else if(language == LANGUAGE_ZH)
     {
         exitbtn("返回");
+    }
+    else if(language == LANGUAGE_FR)
+    {
+        exitbtn("Retour");
     }
     else
     {

@@ -50,7 +50,7 @@ Frame_WifiScan::Frame_WifiScan(void)
         _key_wifi[i]->AddArgs(EPDGUI_Button::EVENT_RELEASED, 1, (void*)(&_is_run));
         _key_wifi[i]->Bind(EPDGUI_Button::EVENT_RELEASED, key_wifi_cb);
     }
- 
+
     _language = GetLanguage();
     if(_language == LANGUAGE_JA)
     {
@@ -61,6 +61,11 @@ Frame_WifiScan::Frame_WifiScan(void)
     {
         exitbtn("主页");
         _canvas_title->drawString("无线局域网", 270, 34);
+    }
+    else if(_language == LANGUAGE_FR)
+    {
+        exitbtn("Accueil");
+        _canvas_title->drawString("WLAN", 270, 34);
     }
     else
     {
@@ -141,7 +146,7 @@ int Frame_WifiScan::scan()
         M5.EPD.UpdateFull(UPDATE_MODE_GC16);
     }
     _scan_count++;
-    
+
     int wifi_num;
     while(1)
     {
@@ -158,7 +163,7 @@ int Frame_WifiScan::scan()
         for(int i = 0; i < wifi_num; i++)
         {
             String ssid = WiFi.SSID(i);
-            
+
             if(ssid == _connect_ssid)
             {
                 connect_wifi_idx = i;
@@ -215,7 +220,7 @@ int Frame_WifiScan::scan()
 
         cnt++;
     }
-    
+
     _key_wifi[wifi_num]->SetCustomString("_$refresh$_");
     _key_wifi[wifi_num]->SetHide(false);
     _key_wifi[wifi_num]->CanvasNormal()->fillCanvas(0);
@@ -228,6 +233,10 @@ int Frame_WifiScan::scan()
     else if(_language == LANGUAGE_ZH)
     {
         _key_wifi[wifi_num]->CanvasNormal()->drawString("刷新", 58, 35);
+    }
+    else if(_language == LANGUAGE_FR)
+    {
+        _key_wifi[wifi_num]->CanvasNormal()->drawString("Actualiser", 58, 35);
     }
     else
     {
@@ -286,6 +295,10 @@ void Frame_WifiScan::Connect()
             {
                 err.drawString("密码错误", 150, 55);
             }
+            else if(_language == LANGUAGE_FR)
+            {
+                err.drawString("Mot de passe incorrecte", 150, 55);
+            }
             else
             {
                 err.drawString("Wrong password", 150, 55);
@@ -301,7 +314,7 @@ void Frame_WifiScan::Connect()
     }
 
     _connect_key->CanvasNormal()->pushImage(532 - 15 - 32, 14, 32, 32, ImageResource_item_icon_success_32x32);
-    
+
     _key_wifi[0]->SetEnable(false);
     _key_wifi[0]->SetHide(false);
     if(_connect_key != _key_wifi[0])
@@ -316,7 +329,7 @@ void Frame_WifiScan::Connect()
 
     SetWifi(_connect_ssid, _connect_password);
     // SyncNTPTime();
-    scan();
+    //scan();
 }
 
 void Frame_WifiScan::SetConnected(String ssid, int rssi)
@@ -326,7 +339,7 @@ void Frame_WifiScan::SetConnected(String ssid, int rssi)
     for(int i = 1; i < MAX_BTN_NUM; i++)
     {
         _key_wifi[i]->SetPos(_key_wifi[i]->getX(), _key_wifi[i]->getY() + 32);
-    }    
+    }
     _key_wifi[0]->SetEnable(false);
     _key_wifi[0]->SetHide(false);
     _connected = 1;
@@ -368,6 +381,6 @@ int Frame_WifiScan::init(epdgui_args_vector_t &args)
         _connect = false;
     }
     EPDGUI_AddObject(_key_exit);
-    
+
     return 3;
 }

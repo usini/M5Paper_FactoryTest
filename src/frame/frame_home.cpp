@@ -26,7 +26,7 @@ void key_home_air_adjust_cb(epdgui_args_vector_t &args)
     if(operation == 1)
     {
         temp++;
-        
+
     }
     else
     {
@@ -108,6 +108,13 @@ Frame_Home::Frame_Home(void)
         InitSwitch(_sw_socket1, "电饭煲", "厨房", ImageResource_home_icon_socket_off_92x92, ImageResource_home_icon_socket_on_92x92);
         InitSwitch(_sw_socket2, "电脑", "卧室", ImageResource_home_icon_socket_off_92x92, ImageResource_home_icon_socket_on_92x92);
     }
+    else if(language == LANGUAGE_FR)
+    {
+        InitSwitch(_sw_light1, "Plafonnier", "Salon", ImageResource_home_icon_light_off_92x92, ImageResource_home_icon_light_on_92x92);
+        InitSwitch(_sw_light2, "Lampe", "Chambre", ImageResource_home_icon_light_off_92x92, ImageResource_home_icon_light_on_92x92);
+        InitSwitch(_sw_socket1, "Cuiseuse", "Cuisine", ImageResource_home_icon_socket_off_92x92, ImageResource_home_icon_socket_on_92x92);
+        InitSwitch(_sw_socket2, "Ordinateur", "Chambre", ImageResource_home_icon_socket_off_92x92, ImageResource_home_icon_socket_on_92x92);
+    }
     else
     {
         InitSwitch(_sw_light1, "Ceiling Light", "Living Room", ImageResource_home_icon_light_off_92x92, ImageResource_home_icon_light_on_92x92);
@@ -116,7 +123,7 @@ Frame_Home::Frame_Home(void)
         InitSwitch(_sw_socket2, "Computer", "Bedroom", ImageResource_home_icon_socket_off_92x92, ImageResource_home_icon_socket_on_92x92);
     }
 
-    
+
 
     memcpy(_sw_air_1->Canvas(0)->frameBuffer(), ImageResource_home_air_background_228x184, 228 * 184 / 2);
     _sw_air_1->Canvas(0)->setTextDatum(TC_DATUM);
@@ -128,6 +135,10 @@ Frame_Home::Frame_Home(void)
     else if(language == LANGUAGE_ZH)
     {
         _sw_air_1->Canvas(0)->drawString("卧室", 114, 152);
+    }
+    else if(language == LANGUAGE_FR)
+    {
+        _sw_air_1->Canvas(0)->drawString("Chambre", 114, 152);
     }
     else
     {
@@ -151,6 +162,10 @@ Frame_Home::Frame_Home(void)
     else if(language == LANGUAGE_ZH)
     {
         _sw_air_2->Canvas(0)->drawString("客厅", 114, 152);
+    }
+    else if(language == LANGUAGE_FR)
+    {
+        _sw_air_2->Canvas(0)->drawString("Salon", 114, 152);
     }
     else
     {
@@ -214,6 +229,11 @@ Frame_Home::Frame_Home(void)
     {
         exitbtn("主页");
         _canvas_title->drawString("控制面板", 270, 34);
+    }
+    else if(language == LANGUAGE_FR)
+    {
+        exitbtn("Accueil");
+        _canvas_title->drawString("Panneau de contrôle", 270, 34);
     }
     else
     {

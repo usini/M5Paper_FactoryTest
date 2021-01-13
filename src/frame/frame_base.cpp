@@ -17,7 +17,7 @@ Frame_Base::Frame_Base(bool _has_title)
     _frame_name = "Frame_Base";
 }
 
-Frame_Base::~Frame_Base() 
+Frame_Base::~Frame_Base()
 {
     if(_key_exit != NULL)
         delete _key_exit;

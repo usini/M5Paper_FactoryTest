@@ -1,6 +1,6 @@
 #include "epdgui_switch.h"
 
-EPDGUI_Switch::EPDGUI_Switch(int16_t state_num, int16_t x, int16_t y, int16_t w, int16_t h): 
+EPDGUI_Switch::EPDGUI_Switch(int16_t state_num, int16_t x, int16_t y, int16_t w, int16_t h):
 EPDGUI_Base(x, y, w, h)
 {
     if(state_num > EPDGUI_SWITCH_MAX_STATE)
@@ -95,7 +95,7 @@ void EPDGUI_Switch::Bind(int16_t state, void (* func_cb)(epdgui_args_vector_t&))
     {
         return;
     }
-    
+
     this->_func_cb_array[state] = func_cb;
 }
 
@@ -157,7 +157,7 @@ void EPDGUI_Switch::AddArgs(int16_t state, uint16_t n, void* arg)
     {
         return;
     }
-    
+
     if(this->_func_cb_param_array[state].size() > n)
     {
         this->_func_cb_param_array[state][n] = arg;

@@ -35,12 +35,17 @@ Frame_Setting_Wallpaper::Frame_Setting_Wallpaper(void)
         exitbtn("设置");
         _canvas_title->drawString("壁纸", 270, 34);
     }
+    else if(language == LANGUAGE_FR)
+    {
+        exitbtn("Paramètres");
+        _canvas_title->drawString("Fond d'écran", 270, 34);
+    }
     else
     {
         exitbtn("Setting");
         _canvas_title->drawString("Wallpaper", 270, 34);
     }
-    
+
     _key_exit->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void*)(&_is_run));
     _key_exit->Bind(EPDGUI_Button::EVENT_RELEASED, &Frame_Base::exit_cb);
 }

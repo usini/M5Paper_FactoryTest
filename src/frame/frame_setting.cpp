@@ -75,6 +75,10 @@ void key_synctime_cb(epdgui_args_vector_t &args)
         {
             info.drawString("WLAN未连接", 150, 55);
         }
+        else if(language == LANGUAGE_FR)
+        {
+            info.drawString("WLAN non connecté", 150, 55);
+        }
         else
         {
             info.drawString("WLAN not connected", 150, 55);
@@ -102,6 +106,10 @@ void key_synctime_cb(epdgui_args_vector_t &args)
         {
             info.drawString("同步失败", 150, 55);
         }
+        else if(language == LANGUAGE_FR)
+        {
+            info.drawString("Echec de la synchro du temps", 150, 55);
+        }
         else
         {
             info.drawString("Time sync failed", 150, 55);
@@ -117,6 +125,10 @@ void key_synctime_cb(epdgui_args_vector_t &args)
         else if(language == LANGUAGE_ZH)
         {
             info.drawString("成功", 150, 55);
+        }
+        else if(language == LANGUAGE_FR)
+        {
+            info.drawString("Succès", 150, 55);
         }
         else
         {
@@ -187,7 +199,7 @@ Frame_Setting::Frame_Setting(void)
     _timezone_canvas->setTextSize(26);
     _timezone_canvas->setTextColor(15);
     _timezone_canvas->setTextDatum(CL_DATUM);
- 
+
     uint8_t language = GetLanguage();
     _key_wallpaper = new EPDGUI_Button(4, 100, 532, 61);
     _key_language = new EPDGUI_Button(4, 160, 532, 61);
@@ -203,7 +215,7 @@ Frame_Setting::Frame_Setting(void)
     }
     key_timezone_reset = new EPDGUI_Button(str, 360, kTimeZoneY, 88, 52);
     key_timezone_minus = new EPDGUI_Button("-", 272, kTimeZoneY, 88, 52);
-    
+
     key_timezone_plus->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, &_timezone);
     key_timezone_plus->AddArgs(EPDGUI_Button::EVENT_RELEASED, 1, key_timezone_reset);
     key_timezone_plus->Bind(EPDGUI_Button::EVENT_RELEASED, key_timezone_plus_cb);
@@ -237,6 +249,17 @@ Frame_Setting::Frame_Setting(void)
         _timezone_canvas->drawString("时区 (UTC)", 15, 35);
         exitbtn("主页");
         _canvas_title->drawString("设置", 270, 34);
+    }
+    else if(language == LANGUAGE_FR)
+    {
+        _key_wallpaper->setBMPButton("  Fond d'écran", "\u25B6", ImageResource_item_icon_wallpaper_32x32);
+        _key_language->setBMPButton("  Langue", "\u25B6", ImageResource_item_icon_language_32x32);
+        _key_syncntp->setBMPButton("  Synchro Temps", "", ImageResource_item_icon_ntptime_32x32);
+        _key_restart->setBMPButton("  Redémarrage", "", ImageResource_item_icon_restart_32x32);
+        _key_shutdown->setBMPButton("  Extinction", "", ImageResource_item_icon_shutdown_32x32);
+        _timezone_canvas->drawString("Fuseau horaire (UTC)", 15, 35);
+        exitbtn("Acceuil");
+        _canvas_title->drawString("Paramètres", 270, 34);
     }
     else
     {

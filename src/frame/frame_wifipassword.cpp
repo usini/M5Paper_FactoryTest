@@ -32,12 +32,12 @@ Frame_WifiPassword::Frame_WifiPassword(bool isHorizontal) : Frame_Base()
         else
             key_textclear = new EPDGUI_Button("CLR", 4, kKeyBaseY, 260, 52);
     }
-    
+
     inputbox->SetTextMargin(8, 15, 8, 8);
     inputbox->SetState(EPDGUI_Textbox::EVENT_PRESSED);
 
     keyboard = new EPDGUI_Keyboard(isHorizontal, EPDGUI_Keyboard::STYLE_INPUTMODE_NEEDCONFIRM);
-    
+
     key_textclear->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void*)inputbox);
     key_textclear->Bind(EPDGUI_Button::EVENT_RELEASED, key_passwordclear_cb);
 
@@ -51,12 +51,17 @@ Frame_WifiPassword::Frame_WifiPassword(bool isHorizontal) : Frame_Base()
         exitbtn("无线局域网", 200);
         _canvas_title->drawString("密码", 270, 34);
     }
+    else if(language == LANGUAGE_FR)
+    {
+        exitbtn("WLAN", 200);
+        _canvas_title->drawString("  Mot de passe", 270, 34);
+    }
     else
     {
         exitbtn("WLAN");
         _canvas_title->drawString("Password", 270, 34);
     }
-    
+
     _key_exit->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void*)(&_is_run));
     _key_exit->Bind(EPDGUI_Button::EVENT_RELEASED, &Frame_Base::exit_cb);
 }
@@ -86,7 +91,7 @@ int Frame_WifiPassword::run(void)
     if(data.indexOf("\n") >= 0)
     {
         String *pswd = new String(inputbox->GetText());
-        EPDGUI_AddFrameArg("Frame_WifiScan", 0, pswd);        
+        EPDGUI_AddFrameArg("Frame_WifiScan", 0, pswd);
         inputbox->SetText("");
         EPDGUI_PopFrame();
         _is_run = 0;

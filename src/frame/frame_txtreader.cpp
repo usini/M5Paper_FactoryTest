@@ -46,6 +46,10 @@ Frame_txtReader::Frame_txtReader(String path)
     {
         exitbtn("返回");
     }
+    else if(_language == LANGUAGE_FR)
+    {
+        exitbtn("Retour");
+    }
     else
     {
         exitbtn("Back");

@@ -55,7 +55,7 @@ void EPDGUI_MutexSwitch::UpdateState(int16_t x, int16_t y)
             _last_pressed = p;
             pressed_sw = p;
         }
-        
+
         (*p)->UpdateState(x, y);
     }
 
@@ -77,7 +77,7 @@ void EPDGUI_MutexSwitch::UpdateState(int16_t x, int16_t y)
         }
 
         if((*p)->getState() != 0)
-        {   
+        {
             (*p)->setState(0);
             (*p)->Draw(UPDATE_MODE_GL16);
         }
@@ -90,7 +90,7 @@ void EPDGUI_MutexSwitch::SetDefault(uint16_t idx)
     {
         _default_idx = idx;
     }
-    
+
     int i = 0;
     for(std::list<EPDGUI_Switch*>::iterator p = _object_list.begin(); p != _object_list.end(); p++)
     {

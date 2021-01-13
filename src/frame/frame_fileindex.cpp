@@ -52,6 +52,10 @@ Frame_FileIndex::Frame_FileIndex(String path)
         {
             exitbtn("主页");
         }
+        else if (language == LANGUAGE_FR)
+        {
+            exitbtn("Acceuil");
+        }
         else
         {
             exitbtn("Home");
@@ -173,8 +177,8 @@ void Frame_FileIndex::listDir(fs::FS &fs, const char *dirname)
             btn->AddArgs(EPDGUI_Button::EVENT_RELEASED, 1, (void*)(&_is_run));
             btn->Bind(EPDGUI_Button::EVENT_RELEASED, key_fileindex_text_cb);
         }
-        else if((suffix.indexOf("bmp") >= 0) 
-        || (suffix.indexOf("BMP") >= 0) 
+        else if((suffix.indexOf("bmp") >= 0)
+        || (suffix.indexOf("BMP") >= 0)
         || (suffix.indexOf("png") >= 0)
         || (suffix.indexOf("PNG") >= 0)
         || (suffix.indexOf("jpg") >= 0)
@@ -215,7 +219,7 @@ int Frame_FileIndex::init(epdgui_args_vector_t &args)
     {
         listDir(SD, _path.c_str());
     }
-    
+
     M5.EPD.WriteFullGram4bpp(GetWallpaper());
     _canvas_title->pushCanvas(0, 8, UPDATE_MODE_NONE);
     EPDGUI_AddObject(_key_exit);

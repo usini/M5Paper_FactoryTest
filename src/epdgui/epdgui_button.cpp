@@ -1,6 +1,6 @@
 #include "epdgui_button.h"
 
-EPDGUI_Button::EPDGUI_Button(int16_t x, int16_t y, int16_t w, int16_t h): 
+EPDGUI_Button::EPDGUI_Button(int16_t x, int16_t y, int16_t w, int16_t h):
 EPDGUI_Base(x, y, w, h)
 {
     this->_CanvasNormal = new M5EPD_Canvas(&M5.EPD);
@@ -9,7 +9,7 @@ EPDGUI_Base(x, y, w, h)
     this->_CanvasPressed->createCanvas(_w, _h);
 }
 
-EPDGUI_Button::EPDGUI_Button(String label, int16_t x, int16_t y, int16_t w, int16_t h, uint32_t style): 
+EPDGUI_Button::EPDGUI_Button(String label, int16_t x, int16_t y, int16_t w, int16_t h, uint32_t style):
 EPDGUI_Base(x, y, w, h)
 {
     if(style & STYLE_INVISABLE)
@@ -17,14 +17,14 @@ EPDGUI_Base(x, y, w, h)
         _is_invisable = true;
         return;
     }
-    
+
     this->_label = label;
-    
+
     this->_CanvasNormal = new M5EPD_Canvas(&M5.EPD);
     this->_CanvasPressed = new M5EPD_Canvas(&M5.EPD);
 
     // log_d("[%s] %d, %d", label.c_str(), _x, _y);
-    
+
     this->_CanvasNormal->createCanvas(_w, _h);
     this->_CanvasPressed->createCanvas(_w, _h);
 
@@ -39,7 +39,7 @@ EPDGUI_Base(x, y, w, h)
     {
         this->_CanvasNormal->drawRect(0, 0, _w, _h, 15);
     }
-    
+
     if(style & STYLE_ALIGN_LEFT)
     {
         this->_CanvasNormal->setTextDatum(CL_DATUM);

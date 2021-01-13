@@ -58,7 +58,7 @@ enum
 EPDGUI_Keyboard::EPDGUI_Keyboard(int16_t dir, uint32_t style): EPDGUI_Base()
 {
     uint8_t language = GetLanguage();
-    
+
     if(dir) // Horizontal
     {
         const uint16_t kKeyWidth = 72;
@@ -104,6 +104,14 @@ EPDGUI_Keyboard::EPDGUI_Keyboard(int16_t dir, uint32_t style): EPDGUI_Base()
                 _btn[kKeyWrap] = new EPDGUI_Button("换行", kBaseX + 792 - 152, k4thLineY, 152, kKeyHeight);
             else if(style & STYLE_INPUTMODE_NEEDCONFIRM)
                 _btn[kKeyWrap] = new EPDGUI_Button("确认", kBaseX + 792 - 152, k4thLineY, 152, kKeyHeight);
+        }
+        else if(language == LANGUAGE_FR)
+        {
+            _btn[kKeySpace] = new EPDGUI_Button("Espace", kBaseX + 162, k4thLineY, 468, kKeyHeight);
+            if(style & STYLE_INPUTMODE_NORMALTEXT)
+                _btn[kKeyWrap] = new EPDGUI_Button("Justifier", kBaseX + 792 - 152, k4thLineY, 152, kKeyHeight);
+            else if(style & STYLE_INPUTMODE_NEEDCONFIRM)
+                _btn[kKeyWrap] = new EPDGUI_Button("Confirmer", kBaseX + 792 - 152, k4thLineY, 152, kKeyHeight);
         }
         else
         {
@@ -165,6 +173,14 @@ EPDGUI_Keyboard::EPDGUI_Keyboard(int16_t dir, uint32_t style): EPDGUI_Base()
                 _btn[kKeyWrap] = new EPDGUI_Button("换行", kBaseX + 512 - 128, k4thLineY, 128, kKeyHeight);
             else if(style & STYLE_INPUTMODE_NEEDCONFIRM)
                 _btn[kKeyWrap] = new EPDGUI_Button("确认", kBaseX + 512 - 128, k4thLineY, 128, kKeyHeight);
+        }
+        else if(language == LANGUAGE_FR)
+        {
+            _btn[kKeySpace] = new EPDGUI_Button("Espace", kBaseX + 132, k4thLineY, 244, kKeyHeight);
+            if(style & STYLE_INPUTMODE_NORMALTEXT)
+                _btn[kKeyWrap] = new EPDGUI_Button("Justifier", kBaseX + 512 - 128, k4thLineY, 128, kKeyHeight);
+            else if(style & STYLE_INPUTMODE_NEEDCONFIRM)
+                _btn[kKeyWrap] = new EPDGUI_Button("Confirmer", kBaseX + 512 - 128, k4thLineY, 128, kKeyHeight);
         }
         else
         {
@@ -242,7 +258,7 @@ void EPDGUI_Keyboard::Draw(M5EPD_Canvas* canvas)
 
 void EPDGUI_Keyboard::Bind(int16_t state, void (* func_cb)(epdgui_args_vector_t&))
 {
-    
+
 }
 
 void EPDGUI_Keyboard::UpdateState(int16_t x, int16_t y)
@@ -366,5 +382,5 @@ String EPDGUI_Keyboard::getData(void)
 {
     String data = _data;
     _data = "";
-    return data;   
+    return data;
 }

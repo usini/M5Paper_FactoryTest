@@ -56,6 +56,8 @@ Frame_Keyboard::Frame_Keyboard(bool isHorizontal) : Frame_Base()
             key_textclear = new EPDGUI_Button("削除", 804, 25, 72, 120);
         else if(language == LANGUAGE_ZH)
             key_textclear = new EPDGUI_Button("清屏", 804, 25, 72, 120);
+        else if(language == LANGUAGE_FR)
+            key_textclear = new EPDGUI_Button("EFF", 804, 25, 72, 120);
         else
             key_textclear = new EPDGUI_Button("CLR", 804, 25, 72, 120);
 
@@ -71,6 +73,8 @@ Frame_Keyboard::Frame_Keyboard(bool isHorizontal) : Frame_Base()
             key_textclear = new EPDGUI_Button("削除", 4, kKeyBaseY, 260, 52);
         else if(language == LANGUAGE_ZH)
             key_textclear = new EPDGUI_Button("清屏", 4, kKeyBaseY, 260, 52);
+        else if(language == LANGUAGE_FR)
+            key_textclear = new EPDGUI_Button("EFF", 4, kKeyBaseY, 260, 52);
         else
             key_textclear = new EPDGUI_Button("CLR", 4, kKeyBaseY, 260, 52);
 
@@ -78,11 +82,11 @@ Frame_Keyboard::Frame_Keyboard(bool isHorizontal) : Frame_Base()
         key_textsize_reset = new EPDGUI_Button("26", 360, kKeyBaseY, 88, 52);
         key_textsize_minus = new EPDGUI_Button("-", 272, kKeyBaseY, 88, 52);
     }
-    
+
     inputbox->SetState(EPDGUI_Textbox::EVENT_PRESSED);
 
     keyboard = new EPDGUI_Keyboard(isHorizontal);
-    
+
     key_textclear->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void*)inputbox);
     key_textclear->Bind(EPDGUI_Button::EVENT_RELEASED, key_textclear_cb);
     key_textsize_plus->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void*)inputbox);
@@ -105,12 +109,17 @@ Frame_Keyboard::Frame_Keyboard(bool isHorizontal) : Frame_Base()
         exitbtn("主页");
         _canvas_title->drawString("键盘", 270, 34);
     }
+    else if(language == LANGUAGE_FR)
+    {
+        exitbtn("Accueil");
+        _canvas_title->drawString("Clavier", 270, 34);
+    }
     else
     {
         exitbtn("Home");
         _canvas_title->drawString("Keyboard", 270, 34);
     }
-    
+
     _key_exit->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void*)(&_is_run));
     _key_exit->Bind(EPDGUI_Button::EVENT_RELEASED, &Frame_Base::exit_cb);
 }

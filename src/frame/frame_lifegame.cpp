@@ -200,7 +200,7 @@ void Frame_Lifegame::exit()
 Frame_Lifegame::Frame_Lifegame(void)
 {
     _frame_name = "Frame_Lifegame";
- 
+
     uint8_t language = GetLanguage();
     if(language == LANGUAGE_JA)
     {
@@ -211,6 +211,11 @@ Frame_Lifegame::Frame_Lifegame(void)
     {
         exitbtn("主页");
         _canvas_title->drawString("生命游戏", 270, 34);
+    }
+    else if(language == LANGUAGE_FR)
+    {
+        exitbtn("Accueil");
+        _canvas_title->drawString("Jeu de la vie", 270, 34);
     }
     else
     {

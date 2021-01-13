@@ -78,7 +78,7 @@ void SysInit_Start(void)
 
     M5.BatteryADCBegin();
     LoadSetting();
-    
+
     M5EPD_Canvas _initcanvas(&M5.EPD);
     if((!is_factory_test) && SD.exists("/font.ttf"))
     {
@@ -149,16 +149,16 @@ void SysInit_Start(void)
             }
         }
     }
-    
+
     log_d("done");
 
     while(uxQueueMessagesWaiting(xQueue_Info));
-    
+
     if(!is_factory_test)
     {
         SysInit_UpdateInfo("$OK");
     }
-    
+
     Serial.println("OK");
 
     delay(500);
@@ -213,7 +213,7 @@ void SysInit_Loading(void *pvParameters)
                 i = 0;
             }
         }
-        
+
         if(xQueueReceive(xQueue_Info, &p, 0))
         {
             String str(p);
@@ -250,7 +250,7 @@ void SysInit_Loading(void *pvParameters)
                 Info.pushCanvas(0, kPosy, UPDATE_MODE_DU);
             }
         }
-    } 
+    }
     vTaskDelete(NULL);
 }
 

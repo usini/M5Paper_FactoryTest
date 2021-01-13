@@ -79,7 +79,7 @@ void key_update_reset_cb(epdgui_args_vector_t &args)
 Frame_Compare::Frame_Compare(void)
 {
     _frame_name = "Frame_Compare";
-    
+
     _canvas_time = new M5EPD_Canvas(&M5.EPD);
     _canvas = new M5EPD_Canvas(&M5.EPD);
     _canvas->createCanvas(432, 100);
@@ -100,6 +100,12 @@ Frame_Compare::Frame_Compare(void)
         exitbtn("主页");
         _canvas_title->drawString("比较", 270, 34);
         _key_updatemode[UPDATE_MODE_INIT] = new EPDGUI_Button("全部重置", 4, 88, 532, 60);
+    }
+    else if(language == LANGUAGE_FR)
+    {
+        exitbtn("Accueil");
+        _canvas_title->drawString("Comparaison", 270, 34);
+        _key_updatemode[UPDATE_MODE_INIT] = new EPDGUI_Button("Réinitialiser", 4, 88, 532, 60);
     }
     else
     {

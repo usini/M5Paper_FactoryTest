@@ -11,7 +11,8 @@ enum
 {
     LANGUAGE_EN = 0,    // default, English
     LANGUAGE_JA, // Japanese
-    LANGUAGE_ZH // Simplified Chinese
+    LANGUAGE_ZH, // Simplified Chinese
+    LANGUAGE_FR
 };
 
 void SetLanguage(uint8_t language);

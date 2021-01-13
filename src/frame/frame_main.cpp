@@ -127,7 +127,7 @@ Frame_Main::Frame_Main(void): Frame_Base(false)
     _names = new M5EPD_Canvas(&M5.EPD);
     _names->createCanvas(540, 32);
     _names->setTextDatum(CC_DATUM);
-    
+
     for(int i = 0; i < 4; i++)
     {
         _key[i] = new EPDGUI_Button("测试", 20 + i * 136, 90, KEY_W, KEY_H);
@@ -221,6 +221,12 @@ void Frame_Main::AppName(m5epd_update_mode_t mode)
         _names->drawString("设定", 20 + 46 + 136, 16);
         _names->drawString("键盘", 20 + 46 + 2 * 136, 16);
     }
+    else if(language == LANGUAGE_FR)
+    {
+        _names->drawString("Test", 20 + 46, 16);
+        _names->drawString("Paramètres", 20 + 46 + 136, 16);
+        _names->drawString("Clavier", 20 + 46 + 2 * 136, 16);
+    }
     else
     {
         _names->drawString("Test", 20 + 46, 16);
@@ -228,7 +234,7 @@ void Frame_Main::AppName(m5epd_update_mode_t mode)
         _names->drawString("Keyboard", 20 + 46 + 2 * 136, 16);
     }
     _names->pushCanvas(0, 186, mode);
-    
+
     _names->fillCanvas(0);
     if(language == LANGUAGE_JA)
     {
@@ -243,6 +249,13 @@ void Frame_Main::AppName(m5epd_update_mode_t mode)
         _names->drawString("刷新比较", 20 + 46 + 136, 16);
         _names->drawString("家", 20 + 46 + 2 * 136, 16);
         _names->drawString("生命游戏", 20 + 46 + 3 * 136, 16);
+    }
+    else if(language == LANGUAGE_FR)
+    {
+        _names->drawString("Stockage", 20 + 46, 16);
+        _names->drawString("Comparaison", 20 + 46 + 136, 16);
+        _names->drawString("Accueil", 20 + 46 + 2 * 136, 16);
+        _names->drawString("Jeu de la vie", 20 + 46 + 3 * 136, 16);
     }
     else
     {

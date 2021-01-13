@@ -8,7 +8,7 @@ class EPDGUI_MutexSwitch : public EPDGUI_Base
 {
 public:
     EPDGUI_MutexSwitch();
-    
+
     void Draw(m5epd_update_mode_t mode);
     void Draw(M5EPD_Canvas* canvas);
     void Bind(int16_t event, void (* func_cb)(epdgui_args_vector_t&));
