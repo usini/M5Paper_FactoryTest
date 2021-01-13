@@ -233,7 +233,7 @@ Frame_Home::Frame_Home(void)
     else if(language == LANGUAGE_FR)
     {
         exitbtn("Accueil");
-        _canvas_title->drawString("Panneau de contrôle", 270, 34);
+        _canvas_title->drawString("Contrôle", 270, 34);
     }
     else
     {

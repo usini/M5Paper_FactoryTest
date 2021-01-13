@@ -365,7 +365,7 @@ int Frame_FactoryTest::run()
                 }
             }
 
-            sprintf(buf, "%.2f ℃", ctemp);
+            sprintf(buf, "%.2f °C", ctemp);
             _canvas_data->drawString(buf, POS_RX, 150);
             sprintf(buf, "%d %%", (int)chumi);
             _canvas_data->drawString(buf, POS_RX, 210);

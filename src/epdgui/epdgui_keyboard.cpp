@@ -1,15 +1,15 @@
 #include "epdgui_keyboard.h"
 
 static const char* kKeyAlphaMapLowerCase[26] = {
-    "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", //10
-       "a", "s", "d", "f", "g", "h", "j", "k", "l",   //9
-            "z", "x", "c", "v", "b", "n", "m",   //7
+    "a", "z", "e", "r", "t", "y", "u", "i", "o", "p", //10
+       "q", "s", "d", "f", "g", "h", "j", "k", "l",   //9
+            "w", "x", "c", "v", "b", "n", "m",   //7
     };
 
 static const char* kKeyAlphaMapUpperCase[26] = {
-    "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", //10
-       "A", "S", "D", "F", "G", "H", "J", "K", "L",   //9
-            "Z", "X", "C", "V", "B", "N", "M",   //7
+    "A", "Z", "E", "R", "T", "Y", "U", "I", "O", "P", //10
+       "Q", "S", "D", "F", "G", "H", "J", "K", "L",   //9
+            "W", "X", "C", "V", "B", "N", "M",   //7
     };
 
 static const char* kKeyAlphaMapNumber[26] = {
@@ -200,7 +200,7 @@ EPDGUI_Keyboard::EPDGUI_Keyboard(int16_t dir, uint32_t style): EPDGUI_Base()
     _sw[kSWCase]->Canvas(0)->pushImage(_sw[kSWCase]->getW() / 2 - 16, _sw[kSWCase]->getH() / 2 - 16, 32, 32, ImageResource_upper_32x32);
     _sw[kSWCase]->Canvas(1)->pushImage(_sw[kSWCase]->getW() / 2 - 16, _sw[kSWCase]->getH() / 2 - 16, 32, 32, ImageResource_upper_32x32);
     _sw[kSWCase]->Canvas(1)->ReverseColor();
-    _sw[kSWSwitch]->SetLabel(0, "あ"); //TODO: Support for kana input
+    _sw[kSWSwitch]->SetLabel(0, "XX"); //TODO: Support for kana input
     _sw[kSWSwitch]->SetLabel(1, "Aa");
     _sw[kSWNumber]->SetLabel(0, "123");
     _sw[kSWNumber]->SetLabel(1, "Abc");

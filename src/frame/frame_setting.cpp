@@ -254,7 +254,7 @@ Frame_Setting::Frame_Setting(void)
     {
         _key_wallpaper->setBMPButton("  Fond d'écran", "\u25B6", ImageResource_item_icon_wallpaper_32x32);
         _key_language->setBMPButton("  Langue", "\u25B6", ImageResource_item_icon_language_32x32);
-        _key_syncntp->setBMPButton("  Synchro Temps", "", ImageResource_item_icon_ntptime_32x32);
+        _key_syncntp->setBMPButton("  Synchronisation du Temps", "", ImageResource_item_icon_ntptime_32x32);
         _key_restart->setBMPButton("  Redémarrage", "", ImageResource_item_icon_restart_32x32);
         _key_shutdown->setBMPButton("  Extinction", "", ImageResource_item_icon_shutdown_32x32);
         _timezone_canvas->drawString("Fuseau horaire (UTC)", 15, 35);

@@ -54,7 +54,7 @@ Frame_WifiPassword::Frame_WifiPassword(bool isHorizontal) : Frame_Base()
     else if(language == LANGUAGE_FR)
     {
         exitbtn("WLAN", 200);
-        _canvas_title->drawString("  Mot de passe", 270, 34);
+        _canvas_title->drawString("Mot de passe", 270, 34);
     }
     else
     {

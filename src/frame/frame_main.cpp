@@ -254,7 +254,7 @@ void Frame_Main::AppName(m5epd_update_mode_t mode)
     {
         _names->drawString("Stockage", 20 + 46, 16);
         _names->drawString("Comparaison", 20 + 46 + 136, 16);
-        _names->drawString("Accueil", 20 + 46 + 2 * 136, 16);
+        _names->drawString("Maison", 20 + 46 + 2 * 136, 16);
         _names->drawString("Jeu de la vie", 20 + 46 + 3 * 136, 16);
     }
     else

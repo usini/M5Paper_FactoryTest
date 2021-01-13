@@ -37,7 +37,7 @@ Frame_Setting_Wallpaper::Frame_Setting_Wallpaper(void)
     }
     else if(language == LANGUAGE_FR)
     {
-        exitbtn("Paramètres");
+        exitbtn("Retour");
         _canvas_title->drawString("Fond d'écran", 270, 34);
     }
     else
